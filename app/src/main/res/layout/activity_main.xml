@@ -9,6 +9,7 @@
     >
 
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/profile"
         android:layout_width="250sp"
         android:layout_height="250sp"
@@ -24,6 +25,7 @@
         tools:ignore="VectorDrawableCompat" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/b0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,6 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profile" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/b1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,6 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/b0" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/b2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/b1" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/b3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,6 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/b2" />
 
     <TextView
+        android:visibility="invisible"
         android:id="@+id/streak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,4 +91,62 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="@+id/b3"
         app:layout_constraintTop_toBottomOf="@+id/b3" />
+
+    <SeekBar
+        android:id="@+id/sb"
+        style="@android:style/Animation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:progressDrawable="@drawable/red_scrubber_progress"
+        android:thumb="@drawable/red_scrubber_control"
+        />
+
+    <Button
+        android:id="@+id/go"
+        android:layout_width="108dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
+        android:background="@mipmap/ic_launcher_background"
+        android:onClick="setDifficulty"
+        android:text="GO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sb"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/sb"
+        app:layout_constraintTop_toBottomOf="@+id/sb"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="LEVEL"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/b1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826" />
 </android.support.constraint.ConstraintLayout>

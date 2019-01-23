@@ -2,12 +2,14 @@ package com.example.asrarulhaque.guessthecharachter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuffColorFilter;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +25,12 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
 
     ImageView profilePic;
-    Button b0,b1,b2,b3;
-    int ansOpIndex,ansIndex,streak=0;
-    TextView streakText;
+    Button b0,b1,b2,b3,go;
+    int ansOpIndex,ansIndex,streak=0,diffLevel;
+    TextView streakText,level;
+    SeekBar sb;
+
+
 
     ArrayList<String> characterUrls=new ArrayList<String>();
     ArrayList<String> characterNames=new ArrayList<String>();
@@ -122,9 +127,19 @@ public class MainActivity extends AppCompatActivity {
         SetImage image=new SetImage();
         Bitmap profile;
         int nameOpIndex[]=new int[4];       //Button Index in terms of name shown
+
+        int range;
+
+        if(diffLevel==0)
+            range=70;
+        else if(diffLevel==1)
+            range=175;
+        else
+            range =403;
+
         for(int i=0;i<4;i++)
         {
-            nameOpIndex[i]=rand.nextInt(403);
+            nameOpIndex[i]=rand.nextInt(range);
         }
         ansOpIndex=rand.nextInt(3);     //Index of the button in which the answer is stored
         ansIndex=nameOpIndex[ansOpIndex];       //Index of right answer in the characterNames arrayList
@@ -165,6 +180,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void setDifficulty(View v)
+    {
+        go.setVisibility(View.INVISIBLE);
+        sb.setVisibility(View.INVISIBLE);
+        level.setVisibility(View.INVISIBLE);
+        b0.setVisibility(View.VISIBLE);
+        b1.setVisibility(View.VISIBLE);
+        b2.setVisibility(View.VISIBLE);
+        b3.setVisibility(View.VISIBLE);
+        streakText.setVisibility(View.VISIBLE);
+        profilePic.setVisibility(View.VISIBLE);
+        sb.setEnabled(false);
+        go.setEnabled(false);
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,8 +207,59 @@ public class MainActivity extends AppCompatActivity {
         b2=(Button)findViewById(R.id.b2);
         b3=(Button)findViewById(R.id.b3);
         streakText=(TextView)findViewById(R.id.streak);
+        go=(Button)findViewById(R.id.go);
+        level=(TextView)findViewById(R.id.level);
+        sb=(SeekBar)findViewById(R.id.sb);
 
         profilePic=(ImageView)findViewById(R.id.profile);
+        sb.setProgress(0);
+        level.setText("Sasuke");
+        diffLevel=0;
+
+        sb.setMax(2);
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(progress==0)
+                    level.setText("Sasuke");
+                else if(progress==1)
+                    level.setText("Naruto");
+                else
+                    level.setText("Itachi");
+                diffLevel=progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                go.setVisibility(View.VISIBLE);
+                sb.setVisibility(View.VISIBLE);
+                level.setVisibility(View.VISIBLE);
+                b0.setVisibility(View.INVISIBLE);
+                b1.setVisibility(View.INVISIBLE);
+                b2.setVisibility(View.INVISIBLE);
+                b3.setVisibility(View.INVISIBLE);
+                streakText.setVisibility(View.INVISIBLE);
+                profilePic.setVisibility(View.INVISIBLE);
+                sb.setEnabled(true);
+                go.setEnabled(true);
+                streak=0;
+                streakText.setText("Streak = 0");
+
+            }
+        });
 
 
 
