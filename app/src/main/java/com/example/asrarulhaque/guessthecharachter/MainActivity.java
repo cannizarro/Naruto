@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         profilePic.setVisibility(View.VISIBLE);
         sb.setEnabled(false);
         go.setEnabled(false);
+        random();
 
     }
 
@@ -277,8 +278,6 @@ public class MainActivity extends AppCompatActivity {
         {
             e.printStackTrace();
         }
-        random();
-
 
     }
 }
