@@ -1,10 +1,10 @@
 # Naruto
 It's a basic guess the character game. The characters are from the anime Naruto.
 
-First you have to set the difficulty level.
-Sasuke == Easy
-Naruto == Medium
-Itachi == Hard
+First you have to set the difficulty level. 
+Sasuke == Easy; 
+Naruto == Medium; 
+Itachi == Hard. 
 
 It just uses basic fetching of html using the inheritance of AsyncTask<~> class.
 
